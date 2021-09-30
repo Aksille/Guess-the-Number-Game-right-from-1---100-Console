@@ -13,15 +13,22 @@ namespace Guess_the_Number_Game
             while(userGuess != secretNumber)
             {
                 Console.Write("Guess the secret number from 1 to 100 : ");
-                userGuess = int.Parse(Console.ReadLine());
-                userGuessCount++;
-                if (userGuess < secretNumber)
+                try
                 {
-                    Console.WriteLine("Number is low!");
+                    userGuess = int.Parse(Console.ReadLine());
+                    userGuessCount++;
+                    if (userGuess < secretNumber)
+                    {
+                        Console.WriteLine("Your number is too low!");
+                    }
+                    else if (userGuess > secretNumber)
+                    {
+                        Console.WriteLine("Your number is too high!");
+                    }
                 }
-                else if (userGuess > secretNumber)
+                catch (Exception e)
                 {
-                    Console.WriteLine("Number is high!");
+                    Console.WriteLine(e);
                 }
             }
             // To applaud the user after guessing correctly
